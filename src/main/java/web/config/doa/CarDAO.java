@@ -1,14 +1,13 @@
-package web.controller;
+package web.config.doa;
 
-import Car.Car;
 import org.springframework.stereotype.Component;
+import web.config.car.Car;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
-public class CarDAO {
+public class CarDAO implements CarDAO1 {
     private List<Car> list;
 
     {
@@ -20,14 +19,8 @@ public class CarDAO {
         list.add(new Car(5,"Tesla", 3));
     }
 
-    public List<Car> index() {
+    public List<Car> getList() {
         return list;
     }
 
-    public List<Car> show(int id) {
-
-        if (id == 0 || id > 5) return list;
-        return list.stream().limit(id).collect(Collectors.toList());
-
-    }
 }

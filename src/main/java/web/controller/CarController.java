@@ -5,27 +5,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import web.config.service.*;
 
 @Controller
 @RequestMapping("/cars")
 public class CarController {
-    private final CarDAO carDAO;
+
+
 
     @Autowired
-    public CarController(CarDAO carDAO) {
-        this.carDAO = carDAO;
-    }
+    private CarService carService;
 
     @GetMapping()
     public String car(Model model) {
-        model.addAttribute("car",carDAO.index()  );
+        model.addAttribute("car", carService.index()  );
         return "cars";
     }
 
 
     @GetMapping("/{id}")
     public String carid(@PathVariable("id") int id, Model model) {
-        model.addAttribute("car", carDAO.show(id));
+        model.addAttribute("car", carService.show(id));
         return "cars";
 
     }

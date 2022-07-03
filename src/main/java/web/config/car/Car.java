@@ -1,4 +1,5 @@
-package Car;
+package web.config.car;
+
 
 public class Car {
     private long id;
